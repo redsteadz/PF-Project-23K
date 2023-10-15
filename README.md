@@ -118,10 +118,15 @@ gcc main.o arithmetic.o -o calculator -lm
 -lm is include the math library
 
 If any of this seems too overwhelming, feel free to contact me any time
+
 I've also included individual 
+
 usrs/hamees.c
+
 usrs/rayyan.c
+
 usrs/huzaila.c
+
 where you can run and your programs in int main(){} like normal if you feel like it!
 
 Enjoy !
