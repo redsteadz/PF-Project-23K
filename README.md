@@ -1,4 +1,4 @@
-# Calculator Project
+![image](https://github.com/redsteadz/PF-Project-23K/assets/86804632/98fc3e2f-bd06-450e-b2b9-a211639e355e)# Calculator Project
 
 ## Table of Contents
 - [Introduction](#introduction)
@@ -92,6 +92,41 @@ To use this calculator project, follow these steps:
 
 ## Usage
 Provide clear and concise examples of how to use the calculator for different mathematical operations. Include code snippets and any special instructions or considerations.
+
+The files are divided into
+- headers/ - These are the header files which would only include declaration of variables, functions and so on
+![image](https://github.com/redsteadz/PF-Project-23K/assets/86804632/c3210f93-6063-4dda-a609-982896596c7a)
+
+
+- functions.c - These are the specific function files that would include running the functions
+![image](https://github.com/redsteadz/PF-Project-23K/assets/86804632/4d273342-2730-400c-a5e8-d03df47c16cc)
+
+- main.c - Which would include the overall functionality stitched together
+![image](https://github.com/redsteadz/PF-Project-23K/assets/86804632/558da17f-dbec-4c43-a17d-4aeedefa51ff)
+
+## Compiling: 
+In order to compile the files together, first we turn each file into their respective object files like so, stitched together with .headers files
+```c
+gcc -c main.c -o main.o -I./headers
+gcc -c arithmetic.c -o arithmetic.o -I./headers
+```
+Then we can combine them all into a single file and compile like: 
+```c
+gcc main.o arithmetic.o -o calculator -lm
+```
+-lm is include the math library
+
+If any of this seems too overwhelming, feel free to contact me any time
+I've also included individual 
+usrs/hamees.c
+usrs/rayyan.c
+usrs/huzaila.c
+where you can run and your programs in int main(){} like normal if you feel like it!
+
+Enjoy !
+
+## Testing
+In order to test the program extensively with many problems, let me know when a function is built and I will write the testing mock for it
 
 ### Example: Arithmetic
 ```c
