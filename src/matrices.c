@@ -40,3 +40,20 @@ bool l_tm (int r, int c, int matrix[r][c]){
   }
   return true;
 }
+
+bool diag (int r, int c, int matrix[r][c]){
+  if (r == c){
+    for (int i = 1; i < r; i++){
+      for (int j = 0; j < i; j++){
+        if (matrix[i][j] == 0 && matrix[j][i] == 0){
+          continue;
+        } else {
+          return false;
+        }
+      }
+    }
+  } else {
+    return false;
+  }
+  return true;
+}

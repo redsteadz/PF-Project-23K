@@ -33,3 +33,22 @@ bool l_tm (vector <vector<int>> matrix){
   return true;
 }
 
+bool diag (vector <vector <int>> matrix){
+  int r = matrix.size();
+  int c = matrix[0].size();
+
+  if (r == c){
+    for (int i = 1; i < r; i++){
+      for (int j = 0; j < i; j++){
+        if (matrix[i][j] == 0 && matrix[j][i] == 0){
+          continue;
+        } else {
+          return false;
+        }
+      }
+    }
+  } else {
+    return false;
+  }
+  return true;
+}
