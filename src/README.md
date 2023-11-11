@@ -1,12 +1,12 @@
-1. The function is declared as void printCenteredText(const char *text, int totalWidth). This means it's a function named printCenteredText that takes two parameters: a pointer to a constant character (const char *text) and an integer (int totalWidth). The function does not return any value, hence the void return type freecodecamp.org.
-2. Inside the function, a constant character pointer delim is declared and initialized with the newline character (\n). This character is used to split the input text into lines freecodecamp.org.
+1. The function is declared as void printCenteredText(const char *text, int totalWidth). This means it's a function named printCenteredText that takes two parameters: a pointer to a constant character (const char *text) and an integer (int totalWidth). The function does not return any value, hence the void return type.
+2. Inside the function, a constant character pointer delim is declared and initialized with the newline character (\n). This character is used to split the input text into lines.
 3. Two character pointers, token and next, are declared. These will be used to tokenize the input text.
-4. A copy of the input text is made using strdup(text), which is then stored in textCopy. This is done to avoid modifying the original text freecodecamp.org.
-5. The strtok_r function is used to split the text into lines. This function returns the next token in the text each time it's called. The while loop continues as long as there are tokens in the text freecodecamp.org.
-6. For each line of text, its length is calculated using strlen(token). If the length of the text is greater than or equal to totalWidth, the text is printed as is, followed by a newline character (\n). This is done using printf("%s\n", token) geeksforgeeks.org.
+4. A copy of the input text is made using strdup(text), which is then stored in textCopy. This is done to avoid modifying the original text.
+5. The strtok_r function is used to split the text into lines. This function returns the next token in the text each time it's called. The while loop continues as long as there are tokens in the text.
+6. For each line of text, its length is calculated using strlen(token). If the length of the text is greater than or equal to totalWidth, the text is printed as is, followed by a newline character (\n). This is done using printf("%s\n", token).
 7. If the length of the text is less than totalWidth, the function calculates the amount of padding (leading spaces) needed to center the text. This is done by subtracting the length of the text from totalWidth and dividing the result by 2.
-8. The function then prints the padding spaces, followed by the text, and a newline character. This is done using a for loop to print the padding spaces, and printf("%s\n", token) to print the text geeksforgeeks.org.
-9. After all lines of text have been processed, the memory allocated for textCopy is freed using free(textCopy). This is important to prevent memory leaks freecodecamp.org.
+8. The function then prints the padding spaces, followed by the text, and a newline character. This is done using a for loop to print the padding spaces, and printf("%s\n", token) to print the text.
+9. After all lines of text have been processed, the memory allocated for textCopy is freed using free(textCopy). This is important to prevent memory leaks.
 Here's a simplified version of the function for better understanding:
 
 ```cpp
