@@ -9,7 +9,7 @@
 9. After all lines of text have been processed, the memory allocated for textCopy is freed using free(textCopy). This is important to prevent memory leaks freecodecamp.org.
 Here's a simplified version of the function for better understanding:
 
-```
+```cpp
 void printCenteredText(const char *text, int totalWidth) {
    const char *delim = "\n";
    char *token, *next;
@@ -37,7 +37,7 @@ void printCenteredText(const char *text, int totalWidth) {
 ```
 This function can be called in the main function or any other function in the program to print centered text. For example:
 
-```
+```cpp
 int main() {
    const char *text = "Hello, World!";
    int totalWidth = 80;
