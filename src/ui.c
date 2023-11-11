@@ -13,6 +13,12 @@ int getWidthLinux(){
   return w.ws_col;
 }
 
+int getHeightLinux(){
+  struct winsize w;
+  ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
+
+  return w.ws_row;
+}
 // Windows
 // int getWidthWin(){
    // CONSOLE_SCREEN_BUFFER_INFO csbi;
