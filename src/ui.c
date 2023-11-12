@@ -56,10 +56,10 @@ void printCenteredText(const char *text, int totalWidth) {
   }
   int vPads = (getHeight() - cnt) / 2;
   // printf("Vertical Padding = %d \nLines= %d\nHeight = %d", vPads, cnt,
-  // getHeightLinux());
-  for (int i = 0; i < vPads; i++) {
-    printf("\n");
-  }
+//   printf("%d ", getHeight());
+//  for (int i = 0; i < vPads; i++) {
+//    printf("\n");
+//  }
 
   const char *delim = "\n"; // Split text into lines by newline character
   char *token, *next;
@@ -128,7 +128,7 @@ void printMatr(int r, int c, int mat[4][4], int px, int py) {
     for (int j = 0; j < c; j++) {
       if (i == px && j == py) {
         // printf("[%d] ", mat[i][j]);
-        char part[5] = "[";
+        char part[4] = "[";
         char num[10000];
         sprintf(num, "%d", mat[i][j]);
         strcat(part, num);
@@ -136,7 +136,7 @@ void printMatr(int r, int c, int mat[4][4], int px, int py) {
         strcat(matrix, part);
       } else if (j == 0) {
         // printf("[%d ", mat[i][j]);
-        char part[5] = "[";
+        char part[4] = "[";
         char num[10000];
         sprintf(num, "%d", mat[i][j]);
         strcat(part, num);
@@ -144,7 +144,7 @@ void printMatr(int r, int c, int mat[4][4], int px, int py) {
         strcat(matrix, part);
       } else if (j == (c - 1)) {
         // printf("%d]\n", mat[i][j]);
-        char part[5] = " ";
+        char part[4] = " ";
         char num[10000];
         sprintf(num, "%d", mat[i][j]);
         strcat(part, num);
@@ -153,7 +153,7 @@ void printMatr(int r, int c, int mat[4][4], int px, int py) {
         strcat(matrix, "\n");
       } else {
         // printf("_ ");
-        char part[3] = " _ ";
+        char part[4] = " _ ";
         strcat(matrix, part); 
       }
       // printf("Working?\n");
