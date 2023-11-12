@@ -32,9 +32,10 @@ int transpose(){
         }
         printf("\n");
     }
+  return 0;
 }
 
-main()
+int main()
 {
 	transpose();
 }

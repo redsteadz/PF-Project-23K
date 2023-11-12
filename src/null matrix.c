@@ -35,7 +35,7 @@ int null_matrix(){
 }
 
 
-main(){
+int main(){
 	int x;
 	x = null_matrix() ;
 	if (x==0){
