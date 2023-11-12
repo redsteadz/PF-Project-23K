@@ -1,24 +1,42 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#ifdef _WIN32
+#include <windows.h>
+  // Windows
+  int getWidth(){
+  CONSOLE_SCREEN_BUFFER_INFO csbi;
+  GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
+
+  int consoleWidth = csbi.dwSize.X;
+  return consoleWidth;
+  }
+  int getHeight(){
+  CONSOLE_SCREEN_BUFFER_INFO csbi;
+  GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
+
+  int consoleHeight = csbi.dwSize.Y;
+  return consoleHeight;
+  }
+#else
 #include <sys/ioctl.h>
 #include <unistd.h>
-// #include <windows.h>
-
 // Linux
-int getWidthLinux() {
+int getWidth() {
   struct winsize w;
   ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
 
   return w.ws_col;
 }
 
-int getHeightLinux() {
+int getHeight() {
   struct winsize w;
   ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
 
   return w.ws_row;
 }
+#endif
+
 // Windows
 // int getWidthWin(){
 // CONSOLE_SCREEN_BUFFER_INFO csbi;
@@ -36,7 +54,7 @@ void printCenteredText(const char *text, int totalWidth) {
       cnt++;
     }
   }
-  int vPads = (getHeightLinux() - cnt) / 2;
+  int vPads = (getHeight() - cnt) / 2;
   // printf("Vertical Padding = %d \nLines= %d\nHeight = %d", vPads, cnt,
   // getHeightLinux());
   for (int i = 0; i < vPads; i++) {
@@ -73,7 +91,7 @@ void printCenteredText(const char *text, int totalWidth) {
 void mainM() {
   const char *menu = "1.Arithmetic\n2.Quadratic&Cubic\n3.Logarithmic\n4."
                      "Trigonometric\n5.Matrices\n6.Exit\n";
-  int width = getWidthLinux();
+  int width = getWidth();
   printCenteredText(menu, width);
   int n;
   scanf("%d", &n);
@@ -142,7 +160,7 @@ void printMatr(int r, int c, int mat[4][4], int px, int py) {
     }
   }
   // puts(matrix);
-  printCenteredText(matrix, getWidthLinux()-1);
+  printCenteredText(matrix, getWidth()-1);
 }
 
 int main(int argc, char const *argv[]) {
