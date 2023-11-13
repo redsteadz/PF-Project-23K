@@ -55,11 +55,11 @@ void printCenteredText(const char *text, int totalWidth) {
     }
   }
   int vPads = (getHeight() - cnt) / 2;
-  // printf("Vertical Padding = %d \nLines= %d\nHeight = %d", vPads, cnt,
-//   printf("%d ", getHeight());
-//  for (int i = 0; i < vPads; i++) {
-//    printf("\n");
-//  }
+  // printf("Vertical Padding = %d \nLines= %d\nHeight = %d", vPads, cnt);
+  printf("%d ", getHeight());
+ for (int i = 0; i < vPads; i++) {
+   printf("\n");
+ }
 
   const char *delim = "\n"; // Split text into lines by newline character
   char *token, *next;
@@ -130,11 +130,11 @@ void printMatr(int r, int c, int mat[4][4], int px, int py) {
         // printf("[%d] ", mat[i][j]);
         char part[4] = "[";
         char num[10000];
-        sprintf(num, "%d", mat[i][j]);
+        sprintf(num, " ", mat[i][j]);
         strcat(part, num);
         strcat(part, "]");
         strcat(matrix, part);
-      } else if (j == 0) {
+      } else if (j == 0 && i <= px && j <= py) {
         // printf("[%d ", mat[i][j]);
         char part[4] = "[";
         char num[10000];
@@ -142,7 +142,7 @@ void printMatr(int r, int c, int mat[4][4], int px, int py) {
         strcat(part, num);
         strcat(part, " ");
         strcat(matrix, part);
-      } else if (j == (c - 1)) {
+      } else if (j == (c - 1) && i <= px && j <= py) {
         // printf("%d]\n", mat[i][j]);
         char part[4] = " ";
         char num[10000];
@@ -163,6 +163,22 @@ void printMatr(int r, int c, int mat[4][4], int px, int py) {
   printCenteredText(matrix, getWidth()-1);
 }
 
+void inputMatric(){
+  int r, c;
+  printf("Input Rows: ");
+  scanf("%d", &r);
+  printf("Input Column: ");
+  scanf("%d", &c);
+  int mat[r][c];
+  for (int i=0;i<r ;i++) {
+    for (int j = 0; j < c ; j++) {
+      printMatr(r, c, mat, i, j);
+      scanf("%d", &mat[i][j]);
+    }
+  }
+  printMatr(r , c, mat, r, c);
+}
+
 int main(int argc, char const *argv[]) {
   int mat[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
 int mat2x2[2][2] = {
@@ -170,7 +186,7 @@ int mat2x2[2][2] = {
   {3, 4}
 };
   printf("The Matrix calculator\n");
-  // system("clear");
+
   int mat4x4[4][4] = {
     {1, 2, 3, 4},
     {5, 6, 7, 8},
@@ -179,8 +195,11 @@ int mat2x2[2][2] = {
   };
   // printf("\n");
   // printMatr(3,3, mat, 1,1);
+  system("clear");
   printf("\n");
-  printMatr(4,4, mat4x4, 1,1);
+  // printMatr(4,4, mat4x4, 1,1);
+  inputMatric();
+
   // mainM();
   // printf("%d\n", getHeightLinux());
   return 0;
