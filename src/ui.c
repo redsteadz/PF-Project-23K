@@ -20,6 +20,9 @@ int getHeight() {
   int consoleHeight = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
   return consoleHeight;
 }
+void clearScreen(){
+	system("cls");
+}
 #else
 
 // Aap log linux istemal kro to smjhaunga
@@ -39,6 +42,9 @@ int getHeight() {
   ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
 
   return w.ws_row;
+}
+void clearScreen(){
+	system("clear");
 }
 #endif
 
@@ -120,7 +126,7 @@ void mainM() {
 
 // Prints the Matrix
 void printMatr(int r, int c, int mat[r][c], int px, int py) { // Px and Py indicate where [-] should be
-  system("clear");
+  clearScreen();
   int size = r * c * 4 + 1; // Calculates the Size
   char matrix[size]; // Making the string to store the matrix in a string form
   matrix[0] = '\0'; // Makes sure it is empty
@@ -174,11 +180,11 @@ int main(int argc, char const *argv[]) {
 
   int mat4x4[4][4] = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 1, 1, 7}, {1, 3, 5, 6}};
   // printf("\n");
-  printMatr(3,3, mat, 3,3);
+//  printMatr(3,3, mat, 3,3);
   // system("clear");
   printf("\n");
   // printMatr(4,4, mat4x4, 4,4);
-  // inputMatric();
+   inputMatric();
   // printf("%d\n", getHeightLinux());
   return 0;
 }
