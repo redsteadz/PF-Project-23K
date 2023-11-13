@@ -209,3 +209,278 @@ bool diag (int r, int c, int matrix[r][c]){
   }
   return true;
 }
+
+//HUZAILA'S WORK:
+//1.idemponent:
+#include<stdio.h>
+void idemponent(){
+	//modifies code for idemponent.!!
+	int row=0, column=0;
+	printf("enter number of rows=");
+	scanf("%d", &row);
+	printf("enter number of column=");
+	scanf("%d", &column);
+	
+	if (row==column){
+	float matrix[row][column];
+	int i=0, j=0;
+	for (i=0; i<row; i++ ){
+		for (j=0; j<column; j++){
+			scanf("%f", &matrix[i][j]);
+		}
+	}
+	
+    float mult[row][column];
+	float sum=0;
+	int n=0;
+	for (i=0; i<row; i++ ){
+		for (j=0; j<column; j++){
+			sum=0;
+			for(n=0; n<row; n++){
+				sum=sum+(matrix[i][n]*matrix[n][j]);
+				mult[i][j]=sum;
+			}
+			printf("%d\n", mult[i][j]);		
+}
+}
+int count=0;
+     for (i=0;i<row; i++){
+     	for (j=0;j<column;j++){
+     		if (mult[i][j]==matrix[i][j]){
+     			count=count+1;
+			 }
+		 }
+	 }
+	 if (count==(row*column)){
+		 	printf("this is an idemponent matrix");
+		 }
+		 else {
+		 	printf("this is not an idemponent matrix");
+		 }
+}
+   else{
+   	printf("this doesnot satisfy the conditions for an idemponent matrix");
+   }
+
+}
+  //2.involuntary:
+  #include<stdio.h>
+void invoulantry(){
+	int row=0, column=0;
+	printf("enter number of rows=");
+	scanf("%d", &row);
+	printf("enter number of column=");
+	scanf("%d", &column);
+	
+	if (row==column){
+	float matrix[row][column];
+	int i=0, j=0;
+	for (i=0; i<row; i++ ){
+		for (j=0; j<column; j++){
+			scanf("%f", &matrix[i][j]);
+		}
+	}
+	
+    float mult[row][column];
+	float sum=0;
+	int n=0;
+	for (i=0; i<row; i++ ){
+		for (j=0; j<column; j++){
+			sum=0;
+			for(n=0; n<row; n++){
+				sum=sum+(matrix[i][n]*matrix[n][j]);
+				mult[i][j]=sum;
+			}
+			printf("%d\n", mult[i][j]);		
+}
+}
+
+//cheching for involuntary matrix:
+
+int count=0;
+     for (i=0;i<row;i++){
+     	for(j=0;j<column;j++){
+     		if (i==j){
+     			if(mult[i][j]==1){
+     				count=count+1;
+				 }
+			 }
+			 else{
+			 	if(mult[i][j]==0){
+			 		count=count+1;
+				 }
+			 }
+		 }
+	 }
+	 if(count==(row*column)){
+	 	printf("this is an invoulantry matrix");
+	 }
+	 else {
+	 	printf("this is not an invoulantry matrix");
+	 }
+}
+    else {
+    	printf("this doesnot satisfy the conditions for an invoulantry matrix");
+	}
+}
+ //3.nilponent:
+ void nilponent(){
+	int row=0, column=0;
+	printf("enter number of rows=");
+	scanf("%d", &row);
+	printf("enter number of column=");
+	scanf("%d", &column);
+		if (row==column){
+			float matrix[row][column];
+	int i=0, j=0;
+	for (i=0; i<row; i++ ){
+		for (j=0; j<column; j++){
+			scanf("%f", &matrix[i][j]);
+		}
+	}
+	float mult[row][column];
+	float sum=0;
+	int n=0;
+	for (i=0; i<row; i++ ){
+		for (j=0; j<column; j++){
+			sum=0;
+			for(n=0; n<row; n++){
+				sum=sum+(matrix[i][n]*matrix[n][j]);
+				mult[i][j]=sum;
+			}
+			//printf("%d\t", mult[i][j]);		
+}
+}
+	int times=row-2;
+	int k;
+	for(k=1;k<=times; k++){
+		for (i=0; i<row; i++ ){
+		for (j=0; j<column; j++){
+			sum=0;
+			for(n=0; n<row; n++){
+				sum=sum+(mult[i][n]*matrix[n][j]);
+				mult[i][j]=sum;
+			}
+			//printf("%d\n", mult[i][j]);		
+}
+}
+		
+	}
+	int count=0;
+	for(i=0;i<row;i++){
+		for(j=0; j<column; j++ ){
+			if(mult[i][j]==0){
+			count=count+1;	
+			}
+		}
+	}
+	if (count==(row*column)){
+			printf("this is a nilponent matrix");
+		}
+		else {
+			printf("this is a not nilponent matrix");
+		}
+}
+
+else {
+	printf("this doesnot satisfy the conditions for a nilponent matrix");
+}
+
+}
+//4.symmetric:
+#include<stdio.h>
+void symmetric(){
+int row,column;
+printf("enter the number of rows=");
+scanf("%d", &row);
+printf("enter the number of columns=");
+scanf("%d", &column);
+
+if (row==column){
+	int matrix[row][column];
+int i,j;
+for (i=0; i<row; i++){
+for(j=0; j<column; j++){
+scanf("%d", &matrix[i][j]);
+}
+}
+printf("\n");
+int At[row][column];
+int temp=0;
+for (i=0;i<row;i++){
+	for (j=0;j<column;j++){
+	temp=matrix[j][i];
+	At[i][j]=temp;
+	//printf("%d\n", At[i][j]);	
+	}
+}
+int count=0;
+for (i=0;i<row;i++){
+	for (j=0;j<column;j++){
+		if(At[i][j]==matrix[i][j]){
+		count=count+1;	
+		}
+	}
+}
+if(count==(row*column)){
+	printf("this is a symmetric matrix");
+}
+else {
+	printf("this is not a symmetric matrix");
+}
+}
+
+else {
+	printf("symmetric matrix of this matix doesnot exist");
+}
+}
+//5.skew symmetric:
+#include<stdio.h>
+void skewsym(){
+int row,column;
+printf("enter the number of rows=");
+scanf("%d", &row);
+printf("enter the number of columns=");
+scanf("%d", &column);
+
+if (row==column){
+	int matrix[row][column];
+int i,j;
+for (i=0; i<row; i++){
+for(j=0; j<column; j++){
+scanf("%d", &matrix[i][j]);
+}
+}
+printf("\n");
+int At[row][column];
+int temp=0;
+for (i=0;i<row;i++){
+	for (j=0;j<column;j++){
+	temp=matrix[j][i];
+	At[i][j]=temp;
+	//printf("%d\n", At[i][j]);	
+	}
+}
+int count=0;
+for (i=0;i<row;i++){
+	for (j=0;j<column;j++){
+		At[i][j]=-1*At[i][j];
+		if(At[i][j]==matrix[i][j]){
+		count=count+1;	
+		}
+		//printf("%d\n", At[i][j]);
+	}
+}
+if(count==(row*column)){
+	printf("this is a skew-symmetric matrix");
+}
+else {
+	printf("this is not a skew-symmetric matrix");
+}
+  
+}
+ else {
+	printf("skew-symmetric matrix of this matix doesnot exist");
+}
+}
+
