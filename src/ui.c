@@ -3,22 +3,27 @@
 #include <string.h>
 #ifdef _WIN32
 #include <windows.h>
-  // Windows
-  int getWidth(){
-  CONSOLE_SCREEN_BUFFER_INFO csbi;
-  GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
-
+// Windows
+int getWidth() {
+  // CONSOLE_SCREEN_BUFFER_INFO is a Struct that stores info abt.. the screen 0_0
+  CONSOLE_SCREEN_BUFFER_INFO csbi; // Makes a struct named csbi
+  GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi); // Assigns it values of the console
+  
+  // Now that it is assigned, It can be accessed using this
   int consoleWidth = csbi.dwSize.X;
   return consoleWidth;
-  }
-  int getHeight(){
+}
+int getHeight() {
   CONSOLE_SCREEN_BUFFER_INFO csbi;
   GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
-
-  int consoleHeight = csbi.dwSize.Y;
+  // Same thing as before, Except We find the Lines from Bottom to top
+  int consoleHeight = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
   return consoleHeight;
-  }
+}
 #else
+
+// Aap log linux istemal kro to smjhaunga
+
 #include <sys/ioctl.h>
 #include <unistd.h>
 // Linux
@@ -37,16 +42,9 @@ int getHeight() {
 }
 #endif
 
-// Windows
-// int getWidthWin(){
-// CONSOLE_SCREEN_BUFFER_INFO csbi;
-// GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
-//
-// int consoleWidth = csbi.dwSize.X;
-// return consoleWidth;
-// }
 
-void printCenteredText(const char *text, int totalWidth) {
+void printCenteredText(const char *text) {
+  int totalWidth = getWidth();
   // Vertical Centering
   int cnt = 0;
   for (int i = 0; i < strlen(text); i++) {
@@ -55,11 +53,10 @@ void printCenteredText(const char *text, int totalWidth) {
     }
   }
   int vPads = (getHeight() - cnt) / 2;
-  // printf("Vertical Padding = %d \nLines= %d\nHeight = %d", vPads, cnt);
-  printf("%d ", getHeight());
- for (int i = 0; i < vPads; i++) {
-   printf("\n");
- }
+
+  for (int i = 0; i < vPads; i++) {
+    printf("\n");
+  }
 
   const char *delim = "\n"; // Split text into lines by newline character
   char *token, *next;
@@ -88,11 +85,13 @@ void printCenteredText(const char *text, int totalWidth) {
   free(textCopy); // Free the memory allocated by strdup
 }
 
+
+// This function would later serve as the main root from which all child menus spawn
 void mainM() {
   const char *menu = "1.Arithmetic\n2.Quadratic&Cubic\n3.Logarithmic\n4."
                      "Trigonometric\n5.Matrices\n6.Exit\n";
-  int width = getWidth();
-  printCenteredText(menu, width);
+
+  printCenteredText(menu);
   int n;
   scanf("%d", &n);
   switch (n) {
@@ -119,88 +118,67 @@ void mainM() {
   }
 }
 
-void printMatr(int r, int c, int mat[4][4], int px, int py) {
-  int size = r*c*4 + 1;
-  char matrix[size];
-  matrix[0]='\0';
+// Prints the Matrix
+void printMatr(int r, int c, int mat[r][c], int px, int py) { // Px and Py indicate where [-] should be
+  system("clear");
+  int size = r * c * 4 + 1; // Calculates the Size
+  char matrix[size]; // Making the string to store the matrix in a string form
+  matrix[0] = '\0'; // Makes sure it is empty
 
   for (int i = 0; i < r; i++) {
     for (int j = 0; j < c; j++) {
+
+      char part[100] = ""; // Part stores the text/num to be concatenated
       if (i == px && j == py) {
-        // printf("[%d] ", mat[i][j]);
-        char part[4] = "[";
-        char num[10000];
-        sprintf(num, " ", mat[i][j]);
-        strcat(part, num);
-        strcat(part, "]");
-        strcat(matrix, part);
-      } else if (j == 0 && i <= px && j <= py) {
-        // printf("[%d ", mat[i][j]);
-        char part[4] = "[";
-        char num[10000];
-        sprintf(num, "%d", mat[i][j]);
-        strcat(part, num);
-        strcat(part, " ");
-        strcat(matrix, part);
-      } else if (j == (c - 1) && i <= px && j <= py) {
-        // printf("%d]\n", mat[i][j]);
-        char part[4] = " ";
-        char num[10000];
-        sprintf(num, "%d", mat[i][j]);
-        strcat(part, num);
-        strcat(part, "]");
-        strcat(matrix, part);
-        strcat(matrix, "\n");
+        strcpy(part, "[-] ");
+        // printf("[-] ");
+      } else if (i < px || (i == px && j <= py)) {
+        // printf("%d ", mat[i][j]);
+        sprintf(part, "%d ", mat[i][j]); // The number is stored in a string form 
+        // strcat(part, num);
       } else {
-        // printf("_ ");
-        char part[4] = " _ ";
-        strcat(matrix, part); 
+        // printf(" - ");
+        strcpy(part, "- ");
       }
-      // printf("Working?\n");
+      if (j == (c - 1)) {
+        strcat(part, "\n");
+      }
+      strcat(matrix, part); // The Part is concatenated into the matrix
     }
   }
-  // puts(matrix);
-  printCenteredText(matrix, getWidth()-1);
+  printCenteredText(matrix);
 }
 
-void inputMatric(){
+void inputMatric() {
   int r, c;
   printf("Input Rows: ");
   scanf("%d", &r);
   printf("Input Column: ");
   scanf("%d", &c);
   int mat[r][c];
-  for (int i=0;i<r ;i++) {
-    for (int j = 0; j < c ; j++) {
+
+  // Inputs the matrix, Printing eachtime
+  for (int i = 0; i < r; i++) {
+    for (int j = 0; j < c; j++) {
       printMatr(r, c, mat, i, j);
       scanf("%d", &mat[i][j]);
     }
   }
-  printMatr(r , c, mat, r, c);
+  printMatr(r, c, mat, r, c);
 }
 
 int main(int argc, char const *argv[]) {
   int mat[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-int mat2x2[2][2] = {
-  {1, 2},
-  {3, 4}
-};
+  int mat2x2[2][2] = {{1, 2}, {3, 4}};
   printf("The Matrix calculator\n");
 
-  int mat4x4[4][4] = {
-    {1, 2, 3, 4},
-    {5, 6, 7, 8},
-    {9, 1, 1, 7},
-    {1, 3, 5, 6}
-  };
+  int mat4x4[4][4] = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 1, 1, 7}, {1, 3, 5, 6}};
   // printf("\n");
-  // printMatr(3,3, mat, 1,1);
-  system("clear");
+  printMatr(3,3, mat, 3,3);
+  // system("clear");
   printf("\n");
-  // printMatr(4,4, mat4x4, 1,1);
-  inputMatric();
-
-  // mainM();
+  // printMatr(4,4, mat4x4, 4,4);
+  // inputMatric();
   // printf("%d\n", getHeightLinux());
   return 0;
 }
