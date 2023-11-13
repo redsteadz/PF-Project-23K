@@ -9,44 +9,30 @@
 
 #include <stdbool.h>
 #include <stdio.h>
-#include "headers/matrices.h"
-
+#include "headers/ui.h"
+ 
 /*
  * RAYYAN'S WORK
  */
 
 int transpose(){
-    int r,c,i,j,x;
+    int r,c,i,j;
     printf("Enter the number of rows: ");
     scanf("%d",&r);
     printf("Enter the number of columns: ");
     scanf("%d",&c);
     
     int a[r][c];
+    inputMatric(r, c, a);
     int t_a[c][r];
-    
+
     for (i=0;i<r;i++){
         for (j=0;j<c;j++){
-            printf("Enter element: ");
-            scanf("%d",&x);
-            a[i][j] = x;
-            t_a[j][i] = x;
+            t_a[j][i] = a[i][j];
         }
     }
-    printf("\n The original matrix is: \n");
-    for (i=0;i<r;i++){
-        for (j=0;j<c;j++){
-            printf("%d  ",a[i][j]);
-        } 
-        printf("\n");
-    }
-    printf("\n The transpose matrix is: \n");
-    for (j=0;j<c;j++){
-        for (i=0;i<r;i++){
-            printf("%d  ",t_a[j][i]);
-        }
-        printf("\n");
-    }
+
+    printMatr(c, r, t_a, c, r);
   return 0;
 }
 
@@ -57,30 +43,17 @@ int scalar_multiplication()
     scanf("%d",&r);
     printf("Enter the number of columns: ");
     scanf("%d",&c);
+    int a[r][c];
+    inputMatric(r, c, a);
     printf("Enter scalar to multiply: ");
     scanf("%d",&x);
-    
-    int a[r][c];
-    
-    for (i=0;i<r;i++){
-    	for (j=0;j<c;j++){
-    		printf("Enter element of array: ");
-    		scanf("%d",&a[i][j]);
-		}
-	}
-	
+
 	for (i=0;i<r;i++){
     	for (j=0;j<c;j++){
     		a[i][j] = x * a[i][j];
     	}
 	}
-	printf("The scaled matrix is: \n");
-    for (i=0;i<r;i++){
-    	for (j=0;j<c;j++){
-    		printf("%d    ",a[i][j]);
-    	}
-    	printf("\n");
-	}
+  printMatr(r, c, a, r, c);
   return 0;
 }
 
@@ -93,17 +66,11 @@ int unit_matrix(){
     if (r!=c){
 		printf("Only enter a square matrix...");
 		return(0);
-	}
-	
+	  }
+	  
     int a[r][c];
-    
-    for (i=0;i<r;i++){
-        for (j=0;j<c;j++){
-            printf("Enter element: ");
-            scanf("%d",&a[i][j]);
-           
-        }
-    }
+    inputMatric(r, c, a);
+
     int sum=0;
     for (i=0;i<r;i++){
         for (j=0;j<c;j++){
@@ -130,22 +97,8 @@ int null_matrix(){
     scanf("%d",&c);
     
     int a[r][c];
-    
-    for (i=0;i<r;i++){
-        for (j=0;j<c;j++){
-            printf("Enter element: ");
-            scanf("%d",&a[i][j]);
-            
-        }
-    }
-	for (i=0;i<r;i++){
-        for (j=0;j<c;j++){
-            printf("%d  ",a[i][j]);
-        }
-        printf("\n");
-    }
-	
-    
+    inputMatric(r, c, a);
+
     for (i=0;i<r;i++){
         for (j=0;j<c;j++){
             if (a[i][j]!=0){
@@ -162,7 +115,14 @@ int null_matrix(){
  */
 
 
-bool u_tm (int r, int c, int matrix[r][c]){
+bool u_tm (){
+  int r, c;
+  printf("Input Rows: ");
+  scanf("%d", &r);
+  printf("Input Columns: ");
+  scanf("%d", &c);
+  int matrix[r][c];
+  inputMatric(r, c, matrix);
 
   if (r >= c){
     int n = r;
@@ -212,7 +172,6 @@ bool diag (int r, int c, int matrix[r][c]){
 
 //HUZAILA'S WORK:
 //1.idemponent:
-#include<stdio.h>
 void idemponent(){
 	//modifies code for idemponent.!!
 	int row=0, column=0;
@@ -264,7 +223,6 @@ int count=0;
 
 }
   //2.involuntary:
-  #include<stdio.h>
 void invoulantry(){
 	int row=0, column=0;
 	printf("enter number of rows=");
@@ -388,7 +346,6 @@ else {
 
 }
 //4.symmetric:
-#include<stdio.h>
 void symmetric(){
 int row,column;
 printf("enter the number of rows=");
@@ -435,7 +392,6 @@ else {
 }
 }
 //5.skew symmetric:
-#include<stdio.h>
 void skewsym(){
 int row,column;
 printf("enter the number of rows=");

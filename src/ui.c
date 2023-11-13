@@ -50,6 +50,7 @@ void clearScreen(){
 
 
 void printCenteredText(const char *text) {
+  clearScreen();
   int totalWidth = getWidth();
   // Vertical Centering
   int cnt = 0;
@@ -93,36 +94,6 @@ void printCenteredText(const char *text) {
 
 
 // This function would later serve as the main root from which all child menus spawn
-void mainM() {
-  const char *menu = "1.Arithmetic\n2.Quadratic&Cubic\n3.Logarithmic\n4."
-                     "Trigonometric\n5.Matrices\n6.Exit\n";
-
-  printCenteredText(menu);
-  int n;
-  scanf("%d", &n);
-  switch (n) {
-  case 1:
-    // Arithmetic Menu
-    break;
-  case 2:
-    // Quadratic
-    break;
-  case 3:
-    // Logarithmic
-    break;
-  case 4:
-    // Trignometric
-    break;
-  case 5:
-    // Matrices
-    break;
-  case 6:
-  default:
-    // Exit
-    printf("Exiting...\n");
-    break;
-  }
-}
 
 // Prints the Matrix
 void printMatr(int r, int c, int mat[r][c], int px, int py) { // Px and Py indicate where [-] should be
@@ -155,13 +126,13 @@ void printMatr(int r, int c, int mat[r][c], int px, int py) { // Px and Py indic
   printCenteredText(matrix);
 }
 
-void inputMatric() {
-  int r, c;
-  printf("Input Rows: ");
-  scanf("%d", &r);
-  printf("Input Column: ");
-  scanf("%d", &c);
-  int mat[r][c];
+void inputMatric(int r, int c, int mat[r][c]) {
+  // int r, c;
+  // printf("Input Rows: ");
+  // scanf("%d", &r);
+  // printf("Input Column: ");
+  // scanf("%d", &c);
+  // int mat[r][c];
 
   // Inputs the matrix, Printing eachtime
   for (int i = 0; i < r; i++) {
@@ -173,18 +144,18 @@ void inputMatric() {
   printMatr(r, c, mat, r, c);
 }
 
-int main(int argc, char const *argv[]) {
-  int mat[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-  int mat2x2[2][2] = {{1, 2}, {3, 4}};
-  printf("The Matrix calculator\n");
-
-  int mat4x4[4][4] = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 1, 1, 7}, {1, 3, 5, 6}};
-  // printf("\n");
-//  printMatr(3,3, mat, 3,3);
-  // system("clear");
-  printf("\n");
-  // printMatr(4,4, mat4x4, 4,4);
-   inputMatric();
-  // printf("%d\n", getHeightLinux());
-  return 0;
-}
+// int main(int argc, char const *argv[]) {
+//   int mat[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+//   int mat2x2[2][2] = {{1, 2}, {3, 4}};
+//   printf("The Matrix calculator\n");
+//
+//   int mat4x4[4][4] = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 1, 1, 7}, {1, 3, 5, 6}};
+//   // printf("\n");
+// //  printMatr(3,3, mat, 3,3);
+//   // system("clear");
+//   printf("\n");
+//   // printMatr(4,4, mat4x4, 4,4);
+//    // inputMatric();
+//   // printf("%d\n", getHeightLinux());
+//   return 0;
+// }

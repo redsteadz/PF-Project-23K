@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/calc.dir/matrices.c.o CMakeFiles/calc.dir/main.c.o CMakeFiles/calc.dir/ui.c.o -o calc 
