@@ -1,1 +1,3 @@
-/usr/bin/cc CMakeFiles/calc.dir/matrices.c.o CMakeFiles/calc.dir/main.c.o CMakeFiles/calc.dir/ui.c.o -o calc 
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\calc.dir/objects.a
+C:\ProgramData\chocolatey\bin\ar.exe qc CMakeFiles\calc.dir/objects.a @CMakeFiles\calc.dir\objects1.rsp
+C:\ProgramData\chocolatey\bin\gcc.exe  -Wall  -static-libgcc -static-libstdc++ -Wl,--whole-archive CMakeFiles\calc.dir/objects.a -Wl,--no-whole-archive -o calc.exe -Wl,--out-implib,libcalc.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\calc.dir\linkLibs.rsp

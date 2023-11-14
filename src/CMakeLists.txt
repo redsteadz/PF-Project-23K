@@ -11,3 +11,10 @@ set(SOURCE_FILES
 
 # Create an executable from the source files
 add_executable(calc ${SOURCE_FILES})
+
+set(CMAKE_C_STANDARD 11)
+
+if(MINGW)
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static-libgcc -static-libstdc++")
+endif()
