@@ -1,3 +1,0 @@
-C:/Users/NM TRADERS/Documents/PF-Project-23K/src/build/CMakeFiles/calc.dir
-C:/Users/NM TRADERS/Documents/PF-Project-23K/src/build/CMakeFiles/edit_cache.dir
-C:/Users/NM TRADERS/Documents/PF-Project-23K/src/build/CMakeFiles/rebuild_cache.dir
