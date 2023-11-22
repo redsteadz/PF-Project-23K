@@ -26,7 +26,7 @@ int det_3x3(int n,int a[n][n])
 
 
 
-main()
+int main()
 {
 	int x,i,j;
 	int n;
@@ -46,8 +46,6 @@ main()
 		x = det_3x3(n,a);
 	}
 	printf("The determinant for this %dx%d matrix is: %d",n,n,x);
-	
-	
 }
 
 
