@@ -124,6 +124,45 @@ void arithM(){
     break;
   }
 }
+void trig(){
+	const char *menu =
+      "1. sin\n2. cos\n3. tan\n4. "
+      "sec\n5. cosec\n6. cot\n7.sin inverse\n8. cos inverse\n9. cot inverse ";
+  printCenteredText(menu);
+	int n;
+    scanf("%d", &n);
+    switch(n)
+{
+	case 1:
+		
+	break;
+	case2:
+	
+	break;
+	case 3:
+	
+	break;	
+	case 4:
+	
+	break;
+	case 5:
+	
+	break;
+	case 6:
+	
+	break;
+	case 7:
+	
+	break;
+	case 8:
+	
+	break;
+	case 9:
+	
+	break;
+}
+	
+}
 
 void mainM() {
   const char *asciiArt =
