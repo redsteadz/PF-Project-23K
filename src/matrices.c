@@ -215,6 +215,125 @@ bool diag() {
 }
 
 // HUZAILA'S WORK:
+//trigonometric functions:
+void sine(){
+	float a;	
+	printCenteredText("enter the value of a:");
+	scanf("%f", &a );
+	float ans;
+	ans=sin(a);
+	char output[50];
+	printf("ans: %lf", ans);
+	sprintf(output,"%f", ans);
+	printCenteredText(output);
+}
+void cosine(){
+	float a;	
+	printCenteredText("enter the value of a:");
+	scanf("%f", &a);
+	float ans;
+	ans=cos(a);
+	char output[50];
+	sprintf(output,"%f", ans);
+	printCenteredText(output);
+}
+void tangent(){
+	float a;	
+	printCenteredText("enter the value of a:");
+	scanf("%f", &a );
+	float ans;
+	ans=tan(a);
+	char output[50];
+	sprintf(output,"%f", ans);
+	printCenteredText(output);
+}
+void secant(){
+	float a;	
+	printCenteredText("enter the value of a:");
+	scanf("%f", &a );
+	float ans;
+	ans=cos(a);
+	ans=1/ans;	
+	char output[50];
+	sprintf(output,"%f", ans);
+	printCenteredText(output);
+}
+void cosecant(){
+	float a;	
+	printCenteredText("enter the value of a:");
+	scanf("%f", &a );
+	float ans;
+	ans=sin(a);
+	ans=1/ans;
+    char output[50];
+	sprintf(output,"%f", ans);
+	printCenteredText(output);
+}
+void cotangent(){
+	float a;
+	printCenteredText("enter the value of a:");
+	scanf("%f", &a );
+	float ans;
+	ans=tan(a);
+	ans=1/ans;
+	char output[50];
+	sprintf(output,"%f", ans);
+	printCenteredText(output);
+}
+void asine(){
+	float a;
+	printCenteredText("enter the value of a:");
+	scanf("%f", &a );
+	float ans;
+	ans=asin(a);
+	char output[50];
+	sprintf(output,"%f", ans);
+	printCenteredText(output);
+}
+void acosine(){
+	float a;
+	printCenteredText("enter the value of a:");
+	scanf("%f", &a );
+	float ans;
+	ans=acos(a);
+	char output[50];
+	sprintf(output,"%f", ans);
+	printCenteredText(output);
+}
+void atangent(){
+	float a;	
+	printCenteredText("enter the value of a:");
+	scanf("%f", &a );
+	float ans;
+	ans=atan(a);
+	char output[50];
+	sprintf(output,"%f", ans);
+	printCenteredText(output);
+}
+//logarithmic functions:
+void ln(){
+	float a;
+	printCenteredText("enter the value of a:");
+	printf("enter the value of a:");
+	scanf("%f", &a );
+	float ans;
+	ans=log(a);
+	char output[50];
+	sprintf(output,"%f", ans);
+	printCenteredText(output);
+}
+void log10(){
+	float a;
+	printCenteredText("enter the value of a:");
+	scanf("%f", &a );
+	float ans;
+	ans=log10(a);
+	char output[50];
+	sprintf(output,"%f", ans);
+	printCenteredText(output);
+}
+
+
 // 1.idemponent:
 void idemponent() {
   // modifies code for idemponent.!!
