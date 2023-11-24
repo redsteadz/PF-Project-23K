@@ -3,6 +3,7 @@
 #include <string.h>
 #ifdef _WIN32
 #include <windows.h>
+#include <conio.h>
 // Windows
 int getWidth() {
   // CONSOLE_SCREEN_BUFFER_INFO is a Struct that stores info abt.. the screen 0_0
@@ -114,28 +115,62 @@ void updateMenu(char arr[][100], int size, int pos) {
 }
 
 int selectMenu(char arr[][100], int size) {
-  system("stty -icanon");
-  clearScreen();
-  updateMenu(arr, size, 0);
-  char ch=0;
-  int pos = 0;
-  getchar();
-  while ((ch = getchar()) != '\n') {
-    if (pos > 0 && ch == 'w') {
-      pos--;
-    } else if (pos < size - 1 && ch == 's') {
-      pos++;
-    } else if (ch == 'q'){
-      pos=-1;
-      break;
-    }
-    clearScreen();
-    updateMenu(arr, size, pos);
-  }
-  system("stty icanon");
-  return pos+1;
-}
+    #ifdef _WIN32
+//    system("cls");
+    #else
+    system("stty -icanon");
+    #endif
 
+    clearScreen();
+    updateMenu(arr, size, 0);
+
+    char ch = 0;
+    int pos = 0;
+
+    #ifdef _WIN32
+    _getch();
+        
+    while ((ch = _getch()) != 13) {
+        if (pos > 0 && ch == 'w') {
+            pos--;
+        } else if (pos < size - 1 && ch == 's') {
+            pos++;
+        } else if (ch == 'q') {
+            pos = -1;
+            break;
+        }
+
+        clearScreen();
+        updateMenu(arr, size, pos);
+    }
+
+    #else
+    getchar();
+    
+    while ((ch = getchar()) != '\n') {
+        if (pos > 0 && ch == 'w') {
+            pos--;
+        } else if (pos < size - 1 && ch == 's') {
+            pos++;
+        } else if (ch == 'q') {
+            pos = -1;
+            break;
+        }
+
+        clearScreen();
+        updateMenu(arr, size, pos);
+    }
+
+    #endif
+
+    #ifdef _WIN32
+//    system("cls");
+    #else
+    system("stty icanon");
+    #endif
+
+    return pos + 1;
+}
 // This function would later serve as the main root from which all child menus spawn
 
 // Prints the Matrix
