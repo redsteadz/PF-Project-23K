@@ -96,6 +96,46 @@ void printCenteredText(const char *text) {
 }
 
 
+
+void updateMenu(char arr[][100], int size, int pos) {
+  char buffer[1000]="";
+  for (int i = 0; i < size; i++) {
+    char part[100]="";
+    if (i != pos) {
+      // puts(arr[i]);
+      sprintf(part, "%s\n", arr[i]);
+    } else {
+      // printf("[[ %s ]]\n", arr[i]);
+      sprintf(part, "[[ %s ]]\n", arr[i]);
+    }
+    strncat(buffer, part, strlen(part));
+  }
+  printCenteredText(buffer);
+}
+
+int selectMenu(char arr[][100], int size) {
+  system("stty -icanon");
+  clearScreen();
+  updateMenu(arr, size, 0);
+  char ch=0;
+  int pos = 0;
+  getchar();
+  while ((ch = getchar()) != '\n') {
+    if (pos > 0 && ch == 'w') {
+      pos--;
+    } else if (pos < size - 1 && ch == 's') {
+      pos++;
+    } else if (ch == 'q'){
+      pos=-1;
+      break;
+    }
+    clearScreen();
+    updateMenu(arr, size, pos);
+  }
+  system("stty icanon");
+  return pos+1;
+}
+
 // This function would later serve as the main root from which all child menus spawn
 
 // Prints the Matrix

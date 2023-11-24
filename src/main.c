@@ -28,9 +28,17 @@ void matM() {
       "Transpose\n5. Scalar Multiplication\n6. Unit Matrix\n7. Null Matrix\n8. "
       "Diagonal\n9. Idempotent\n10. Involuntary\n11. Nilpotent\n12. "
       "Symmetric\n13. Skewsymmetric\n";
-  printCenteredText(menu);
+char menuArr[15][100] = {
+    "1. Upper Triangular", "2. Lower Triangular", "3. Determinant", 
+    "4. Transpose", "5. Scalar Multiplication", "6. Unit Matrix", 
+    "7. Null Matrix", "8. Diagonal", "9. Idempotent", 
+    "10. Involuntary", "11. Nilpotent", "12. Symmetric", 
+    "13. Skewsymmetric", "14. Addition", "15. Subtraction"
+};
+  // printCenteredText(menu);
   int n;
-  scanf("%d", &n);
+  n = selectMenu(menuArr, 15);
+  // scanf("%d", &n);
   switch (n) {
   case 1:
     if (u_tm()) {
@@ -94,6 +102,12 @@ void matM() {
   case 13:
     skewsym();
     break;
+  case 14:
+    addM();
+    break;
+  case 15:
+    subM();
+    break;
   }
 }
 
@@ -101,9 +115,13 @@ void arithM(){
   const char *menu =
       "1. Addition\n2. Subtraction\n3. Multiplication\n4. "
       "Division\n5. Quadratic";
-  printCenteredText(menu);
-  int n;
-  scanf("%d", &n);
+char menuArr[][100] = {
+    "1. Addition", "2. Subtraction", "3. Multiplication", 
+    "4. Division", "5. Quadratic"
+};
+  // printCenteredText(menu);
+  int n = selectMenu(menuArr, 5);
+  // scanf("%d", &n);
   switch (n) {
   case 1:
     add();
@@ -124,44 +142,75 @@ void arithM(){
     break;
   }
 }
-void trig(){
-	const char *menu =
-      "1. sin\n2. cos\n3. tan\n4. "
-      "sec\n5. cosec\n6. cot\n7.sin inverse\n8. cos inverse\n9. cot inverse ";
-  printCenteredText(menu);
-	int n;
-    scanf("%d", &n);
-    switch(n)
-{
-	case 1:
-		
-	break;
-	case2:
-	
-	break;
-	case 3:
-	
-	break;	
-	case 4:
-	
-	break;
-	case 5:
-	
-	break;
-	case 6:
-	
-	break;
-	case 7:
-	
-	break;
-	case 8:
-	
-	break;
-	case 9:
-	
-	break;
+void trig() {
+
+char menuarr[][100] = {
+    "1. Sin", "2. Cos", "3. Tan",
+    "4. Sec", "5. Cosec", "6. Cot",
+    "7. Sin inverse", "8. Cos inverse", "9. Cot inverse"
+};
+    
+    // printcenteredtext(menu);
+
+    int n = selectMenu(menuarr, 9);
+    // scanf("%d", &n);
+
+    switch (n) {
+    case 1:
+        sine();
+        break;
+    case 2:
+        cosine();
+        break;
+    case 3:
+        tangent();
+        break;
+    case 4:
+        secant();
+        break;
+    case 5:
+        cosecant();
+        break;
+    case 6:
+        cotangent();
+        break;
+    case 7:
+        asine();
+        break;
+    case 8:
+        acosine();
+        break;
+    case 9:
+        atangent();
+        break;
+    default:
+        printCenteredText("invalid option");
+        break;
+    }
 }
-	
+
+void logM(){
+
+char menuarr[][100] = {
+    "1. log", "2. ln" 
+};
+    
+    // printcenteredtext(menu);
+
+    int n = selectMenu(menuarr, 2);
+    // scanf("%d", &n);
+
+    switch (n) {
+    case 1:
+        log_10();
+        break;
+    case 2:
+        ln();
+        break;
+    default:
+        printCenteredText("invalid option");
+        break;
+    }
 }
 
 void mainM() {
@@ -184,9 +233,14 @@ void mainM() {
   const char *menu = "1.Arithmetic\n2.Logarithmic\n3."
                      "Trigonometric\n4.Matrices\n5.Exit\n";
 
-  printCenteredText(menu);
-  int n;
-  scanf("%d", &n);
+  char menuArr[][100] = {
+      "1. Arithmetic", "2. Logarithmic", "3. Trigonometric", 
+      "4. Matrices", "5. Exit"
+  };
+
+  // printCenteredText(menu);
+  int n = selectMenu(menuArr, 5);
+  // scanf("%d", &n);
   switch (n) {
   case 1:
     // Arithmetic Menu
@@ -197,6 +251,7 @@ void mainM() {
     break;
   case 3:
     // Trignometric
+    trig();
     break;
   case 4:
     // Matrices

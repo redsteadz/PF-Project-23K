@@ -30,6 +30,8 @@ void invoulantry();
 void nilponent();
 void symmetric();
 void skewsym();
+void addM();
+void subM();
 
 // Arithmetic
 float add();
@@ -37,6 +39,18 @@ float sub();
 float multiply();
 float division();
 float quad();
+void sine();
+void cosine();
+void tangent();
+void secant();
+void cosecant();
+void cotangent();
+void asine();
+void acosine();
+void atangent();
 
+// Logarithmic functions
+void ln();
+void log_10();
 #endif
 

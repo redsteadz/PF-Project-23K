@@ -214,6 +214,45 @@ bool diag() {
   return true;
 }
 
+void addM(){
+  int r, c;
+  printCenteredText("Enter the number of rows:");
+  scanf("%d", &r);
+  printCenteredText("Enter the number of column:");
+  scanf("%d", &c);
+  int mat1[r][c];
+  int mat2[r][c];
+  inputMatric(r, c, mat1);
+  inputMatric(r, c, mat2);
+
+  for (int i = 0; i < r; i++){
+    for (int j = 0 ; j < c ; j++) {
+      mat1[i][j] += mat2[i][j];
+    }
+  }
+  printMatr(r, c, mat1, r, c);
+}
+
+
+void subM(){
+  int r, c;
+  printCenteredText("Enter the number of rows:");
+  scanf("%d", &r);
+  printCenteredText("Enter the number of column:");
+  scanf("%d", &c);
+  int mat1[r][c];
+  int mat2[r][c];
+  inputMatric(r, c, mat1);
+  inputMatric(r, c, mat2);
+
+  for (int i = 0; i < r; i++){
+    for (int j = 0 ; j < c ; j++) {
+      mat1[i][j] -= mat2[i][j];
+    }
+  }
+  printMatr(r, c, mat1, r, c);
+}
+
 // HUZAILA'S WORK:
 //trigonometric functions:
 void sine(){
@@ -322,7 +361,8 @@ void ln(){
 	sprintf(output,"%f", ans);
 	printCenteredText(output);
 }
-void log10(){
+
+void log_10(){
 	float a;
 	printCenteredText("enter the value of a:");
 	scanf("%f", &a );
