@@ -1,5 +1,5 @@
-#ifndef MATRICES_H
-#define MATRICES_H
+#ifndef FUNCTIONS_H
+#define FUNCTIONS_H
 
 // Function to add two matrices
 

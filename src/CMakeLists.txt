@@ -3,7 +3,7 @@ project(Calc)
 
 # Add all your source files
 set(SOURCE_FILES
-    matrices.c 
+    functions.c 
     main.c 
     ui.c 
     # Add more files as needed
