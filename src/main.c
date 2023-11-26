@@ -5,23 +5,9 @@
 #include "headers/functions.h"
 #include "headers/ui.h"
 
-void matM() {
+// <--------- Matrices Menu --------->
 
-  // UpperTriangular
-  // LowerTriangular
-  // Determinent
-  // transpose
-  // scalar_multiplication
-  // unit_matrix
-  // null_matrix
-  // UpperTriangular
-  // LowerTriangular
-  // Diagonal
-  // Idempotent
-  // Involantry
-  // NilPonent
-  // Symmetric
-  // Skewsym
+void matM() {
   const char *menu =
       "1. Upper Triangular\n2. Lower Triangular\n3. Determinant\n4. "
       "Transpose\n5. Scalar Multiplication\n6. Unit Matrix\n7. Null Matrix\n8. "
@@ -49,16 +35,16 @@ void matM() {
   switch (n) {
   case 1:
     if (u_tm()) {
-      printCenteredText("TRUE");
+      printCenteredText("Is an upper triangular matrix");
     } else {
-      printCenteredText("FALSE");
+      printCenteredText("Is not an upper triangular matrix");
     }
     break;
   case 2:
     if (l_tm()) {
-      printCenteredText("TRUE");
+      printCenteredText("Is an lower triangular matrix");
     } else {
-      printCenteredText("FALSE");
+      printCenteredText("Is not an lower triangular matrix");
     }
     break;
   case 3:
@@ -118,6 +104,9 @@ void matM() {
   }
 }
 
+
+// <--------- Arithmetic Menu --------->
+
 void arithM() {
   const char *menu = "1. Addition\n2. Subtraction\n3. Multiplication\n4. "
                      "Division\n5. Quadratic";
@@ -146,16 +135,16 @@ void arithM() {
     break;
   }
 }
+
+// <--------- Trigonometry Menu --------->
+
 void trig() {
 
   char menuarr[][100] = {"1. Sin",         "2. Cos",         "3. Tan",
                          "4. Sec",         "5. Cosec",       "6. Cot",
                          "7. Sin inverse", "8. Cos inverse", "9. Cot inverse"};
 
-  // printcenteredtext(menu);
-
   int n = selectMenu(menuarr, 9);
-  // scanf("%d", &n);
 
   switch (n) {
   case 1:
@@ -191,14 +180,13 @@ void trig() {
   }
 }
 
+// <----- Log Menu ----->
+
 void logM() {
 
   char menuarr[][100] = {"1. log", "2. ln"};
 
-  // printcenteredtext(menu);
-
   int n = selectMenu(menuarr, 2);
-  // scanf("%d", &n);
 
   switch (n) {
   case 1:
@@ -212,6 +200,8 @@ void logM() {
     break;
   }
 }
+
+// <------- Main Menu ------->
 
 void mainM() {
   const char *asciiArt =
@@ -236,9 +226,7 @@ void mainM() {
   char menuArr[][100] = {"1. Arithmetic", "2. Logarithmic", "3. Trigonometric",
                          "4. Matrices", "5. Exit"};
 
-  // printCenteredText(menu);
   int n = selectMenu(menuArr, 5);
-  // scanf("%d", &n);
   switch (n) {
   case 1:
     // Arithmetic Menu

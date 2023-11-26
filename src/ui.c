@@ -97,16 +97,15 @@ void printCenteredText(const char *text) {
 }
 
 
+// Update Menu
 
 void updateMenu(char arr[][100], int size, int pos) {
   char buffer[1000]="";
   for (int i = 0; i < size; i++) {
     char part[100]="";
     if (i != pos) {
-      // puts(arr[i]);
       sprintf(part, "%s\n", arr[i]);
     } else {
-      // printf("[[ %s ]]\n", arr[i]);
       sprintf(part, "[[ %s ]]\n", arr[i]);
     }
     strncat(buffer, part, strlen(part));
@@ -114,9 +113,10 @@ void updateMenu(char arr[][100], int size, int pos) {
   printCenteredText(buffer);
 }
 
+// Select Menu
+
 int selectMenu(char arr[][100], int size) {
     #ifdef _WIN32
-//    system("cls");
     #else
     system("stty -icanon");
     #endif
@@ -126,16 +126,20 @@ int selectMenu(char arr[][100], int size) {
 
     char ch = 0;
     int pos = 0;
-
+    
+    // Windows Specific, _getch() is used to get the input
     #ifdef _WIN32
     _getch();
         
     while ((ch = _getch()) != 13) {
         if (pos > 0 && ch == 'w') {
+      // Move up
             pos--;
         } else if (pos < size - 1 && ch == 's') {
+      // Move down
             pos++;
         } else if (ch == 'q') {
+      // Close
             pos = -1;
             break;
         }
@@ -164,7 +168,6 @@ int selectMenu(char arr[][100], int size) {
     #endif
 
     #ifdef _WIN32
-//    system("cls");
     #else
     system("stty icanon");
     #endif
