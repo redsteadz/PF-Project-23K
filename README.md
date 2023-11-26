@@ -1,6 +1,6 @@
 # Calculator Project
 ![github-header-image](https://github.com/redsteadz/PF-Project-23K/assets/86804632/6a08f6a4-f397-49d7-8c95-9118da616baf)
-[![asciicast](https://asciinema.org/a/XmyLfvEgxqSrqGZZpAzkBbbeR.svg)](https://asciinema.org/a/XmyLfvEgxqSrqGZZpAzkBbbeR)
+![matCliDemo](https://github.com/redsteadz/PF-Project-23K/assets/86804632/c5d7dc81-4faa-42fb-a98e-798cd604d977)
 
 ## Table of Contents
 - [Introduction](#introduction)
@@ -82,6 +82,7 @@ This calculator project is designed to perform a wide range of mathematical oper
 - Matrix Column Operations
 
 ## Getting Started
+For quick use, prebuild executables can be used
 To use this calculator project, follow these steps:
 1. Clone the Git repository to your local machine:
    ```bash
@@ -92,7 +93,6 @@ Navigate to src/build folder and run the following commands:
 ```
 cmake -G "MinGW Makefiles" ..
 mingw32-make
- 
 ```
 ### Linux - Building
 Navigate to src/build folder and run the following commands:
@@ -102,7 +102,7 @@ make
 ```
 
 ## Usage
-Provide clear and concise examples of how to use the calculator for different mathematical operations. Include code snippets and any special instructions or considerations.
+Use `w` and `s` key to move around, `enter` to register.
 
 ## Testing
 In order to test the program extensively with many problems, let me know when a function is built and I will write the testing mock for it
