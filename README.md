@@ -1,5 +1,6 @@
 # Calculator Project
 ![github-header-image](https://github.com/redsteadz/PF-Project-23K/assets/86804632/6a08f6a4-f397-49d7-8c95-9118da616baf)
+[![asciicast](https://asciinema.org/a/XmyLfvEgxqSrqGZZpAzkBbbeR.svg)](https://asciinema.org/a/XmyLfvEgxqSrqGZZpAzkBbbeR)
 
 ## Table of Contents
 - [Introduction](#introduction)
