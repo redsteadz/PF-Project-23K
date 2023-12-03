@@ -54,6 +54,7 @@ void matM() {
     break;
   case 3:
     // Determinent
+    det_3x3();
     break;
   case 4:
     transpose();

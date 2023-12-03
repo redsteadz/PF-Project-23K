@@ -19,7 +19,7 @@
 bool u_tm();
 bool l_tm();
 // int det_2x2;
-// int det_3x3;
+int det_3x3();
 int transpose();
 int scalar_multiplication();
 int unit_matrix();
