@@ -31,9 +31,11 @@ int det_2x2(int n,int a[n][n])
 	return det;
 }
 
-int det_3x3(int n,int a[n][n])
+int det_3x3()
 {
-	int det;
+  int a[3][3];
+  inputMatric(3,3,a);
+  int det;
 	int term1,term2,term3;
 	
 	term1 = a[0][0] * (a[1][1]*a[2][2]-a[1][2]*a[2][1]);
