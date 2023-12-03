@@ -4,6 +4,11 @@
 #include <stdlib.h>
 #include "headers/functions.h"
 #include "headers/ui.h"
+<<<<<<< Updated upstream
+=======
+
+#include <math.h>
+>>>>>>> Stashed changes
 
 // <--------- Matrices Menu --------->
 
@@ -135,6 +140,7 @@ void arithM() {
     break;
   }
 }
+<<<<<<< Updated upstream
 
 // <--------- Trigonometry Menu --------->
 
@@ -199,6 +205,62 @@ void logM() {
     printCenteredText("invalid option");
     break;
   }
+=======
+void trig(){
+	const char *menu =
+      printf("1. sin\n2. cos\n3. tan\n4. "
+      "sec\n5. cosec\n6. cot\n7.sin inverse\n8. cos inverse\n9. cot inverse ");
+  printCenteredText(menu);
+	int n;
+    scanf("%d", &n);
+    switch(n)
+{
+	case 1:
+		sine();
+	break;
+	case2:
+	    cosine();
+	break;
+	case 3:
+	    tangent();
+	break;	
+	case 4:
+	    secant();
+	break;
+	case 5:
+	    cosecant();
+	break;
+	case 6:
+	   cotangent();
+	break;
+	case 7:
+	    asine();
+	break;
+	case 8:
+	    acosine();
+	break;
+	case 9:
+	    atangent();
+	break;
+}
+}
+void logarithm(){
+	const char *menu =
+      "1. log base e\n2. log base 10\n "
+  printCenteredText(menu);
+	int n;
+    scanf("%d", &n);
+    switch(n)
+{
+	case 1:
+		ln();
+	break;
+	case2:
+	    log10();
+	break;
+	
+>>>>>>> Stashed changes
+}
 }
 
 // <------- Main Menu ------->

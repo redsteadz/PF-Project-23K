@@ -262,7 +262,7 @@ void sine(){
 	float ans;
 	ans=sin(a);
 	char output[50];
-	printf("ans: %lf", ans);
+	printf("ans: %f", ans);
 	sprintf(output,"%f", ans);
 	printCenteredText(output);
 }
