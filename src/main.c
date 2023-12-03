@@ -4,13 +4,38 @@
 #include <stdlib.h>
 #include "headers/functions.h"
 #include "headers/ui.h"
-<<<<<<< Updated upstream
-=======
+// <<<<<<< Updated upstream
+// =======
 
-#include <math.h>
->>>>>>> Stashed changes
+// #include <math.h>
+// >>>>>>> Stashed changes
 
 // <--------- Matrices Menu --------->
+
+void detM(){
+  char menuArr[4][100] = {"1. Determinant3x3","2. Determinant2x2","3. Adjoint3x3", "4. Adjoint2x2"};
+  int n;
+  n = selectMenu(menuArr,4);
+  
+  switch(n){
+    case 1:
+      det_3x3();
+      break;
+    case 2:
+      det_2x2();
+      break;
+    case 3:
+      adj_3x3();
+      break;
+    case 4:
+      adj_2x2();
+      break;
+    default:
+      printCenteredText("Invalid Input");
+      break;
+  }
+
+}
 
 void matM() {
   const char *menu =
@@ -20,7 +45,7 @@ void matM() {
       "Symmetric\n13. Skewsymmetric\n";
   char menuArr[15][100] = {"1. Upper Triangular",
                            "2. Lower Triangular",
-                           "3. Determinant",
+                           "3. Determinant/Adjoint",
                            "4. Transpose",
                            "5. Scalar Multiplication",
                            "6. Unit Matrix",
@@ -54,7 +79,8 @@ void matM() {
     break;
   case 3:
     // Determinent
-    det_3x3();
+    // det_3x3();
+    detM();
     break;
   case 4:
     transpose();
@@ -129,7 +155,6 @@ void arithM() {
     sub();
     break;
   case 3:
-    // Determinent
     multiply();
     break;
   case 4:
@@ -137,11 +162,10 @@ void arithM() {
     break;
   case 5:
     quad();
-    // Matrices
     break;
   }
 }
-<<<<<<< Updated upstream
+// <<<<<<< Updated upstream
 
 // <--------- Trigonometry Menu --------->
 
@@ -206,63 +230,8 @@ void logM() {
     printCenteredText("invalid option");
     break;
   }
-=======
-void trig(){
-	const char *menu =
-      printf("1. sin\n2. cos\n3. tan\n4. "
-      "sec\n5. cosec\n6. cot\n7.sin inverse\n8. cos inverse\n9. cot inverse ");
-  printCenteredText(menu);
-	int n;
-    scanf("%d", &n);
-    switch(n)
-{
-	case 1:
-		sine();
-	break;
-	case2:
-	    cosine();
-	break;
-	case 3:
-	    tangent();
-	break;	
-	case 4:
-	    secant();
-	break;
-	case 5:
-	    cosecant();
-	break;
-	case 6:
-	   cotangent();
-	break;
-	case 7:
-	    asine();
-	break;
-	case 8:
-	    acosine();
-	break;
-	case 9:
-	    atangent();
-	break;
 }
-}
-void logarithm(){
-	const char *menu =
-      "1. log base e\n2. log base 10\n "
-  printCenteredText(menu);
-	int n;
-    scanf("%d", &n);
-    switch(n)
-{
-	case 1:
-		ln();
-	break;
-	case2:
-	    log10();
-	break;
-	
->>>>>>> Stashed changes
-}
-}
+
 
 // <------- Main Menu ------->
 
@@ -297,6 +266,7 @@ void mainM() {
     break;
   case 2:
     // Logarithmic
+    logM();
     break;
   case 3:
     // Trignometric

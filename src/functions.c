@@ -376,6 +376,79 @@ void log_10(){
 }
 
 
+void adj_3x3() {
+  int i, j, k, l, t;
+  int a[3][3];
+  inputMatric(3, 3, a);
+  // Input the matrix
+  // printf("Enter the elements of the 3x3 matrix:\n");
+  // for (i = 0; i < 3; i++) {
+  //   for (j = 0; j < 3; j++) {
+  //     scanf("%d", &a[i][j]);
+  //   }
+  // }
+
+  int temp[2][2];
+  int det[3][3];
+
+  for (i = 0; i < 3; i++) {
+    for (j = 0; j < 3; j++) {
+      int x = 0, y = 0;
+      // Create the submatrix without row i and column j
+      for (k = 0; k < 3; k++) {
+        for (l = 0; l < 3; l++) {
+          if (k != i && l != j) {
+            temp[x][y] = a[k][l];
+            y = (y + 1) % 2;
+            if (y == 0) {
+              x++;
+            }
+          }
+        }
+      }
+
+      // Calculate the determinant of the 2x2 submatrix
+      t = (temp[0][0] * temp[1][1]) - (temp[0][1] * temp[1][0]);
+
+      // Calculate the cofactor with alternating signs similar to odd even 
+      det[i][j] = (i + j) % 2 == 0 ? t : -t;
+    }
+  }
+
+  // printf("Adjoint matrix:\n");
+  // for (i = 0; i < 3; i++) {
+  //   for (j = 0; j < 3; j++) {
+  //     printf("%d ", det[j][i]);
+  //   }
+  //   printf("\n");
+  // }
+  printMatr(3, 3 , det, 3, 3);
+}
+void adj_2x2(){
+	int i,j;
+	int a[2][2];
+	// printf("Enter the elements of the 2x2 matrix:\n");
+  // for (i = 0; i < 2; i++) {
+  //   for (j = 0; j < 2; j++) {
+  //     scanf("%d", &a[i][j]);
+  //   }
+  // }
+  inputMatric(2, 2, a);
+  int adj[2][2];
+  adj[0][0]=a[1][1];
+  adj[0][1]=-a[0][1];
+  adj[1][0]=-a[1][0];
+  adj[1][1]=a[0][0];
+	// for (i = 0; i < 2; i++) {
+ //    for (j = 0; j < 2; j++) {
+ //      printf("%d ", adj[i][j]);
+ //    }
+ //    printf("\n");
+ //  }
+printMatr(2, 2 , adj, 2, 2); 
+}
+
+
 // 1.idemponent:
 void idemponent() {
   // modifies code for idemponent.!!
@@ -770,4 +843,51 @@ float quad() {
   sprintf(buffer, "%.1f, %.1f", x1, x2);
   printCenteredText(buffer);
   return 0;
+}
+
+void write_to_file(char *fname, int r, int c, int a[r][c]){
+  FILE *fptr;
+  fptr = fopen(fname,"a");
+  
+  fprintf(fptr, "[ %d %d\n", r, c);
+  for (int i = 0; i < r ; i++) {
+    for (int j = 0 ; j < c ; j++) {
+      fprintf(fptr,"%d ",a[i][j]);
+
+      if(j < c - 1){
+        fprintf(fptr," ");
+      }
+    }
+    fprintf(fptr, "\n");
+  }
+  fprintf(fptr, "]\n");
+  fclose(fptr);
+}
+
+int** read_from_file(char *fname, int x, int **ans, int *r, int *c){
+  FILE *fptr;
+  fptr = fopen(fname,"r");
+  char buffer[50];
+  char ch;
+  while (x!=0) { 
+    if ((ch = fgetc(fptr)) == '[') {
+      x--;
+    }
+    }
+  // int r, c;
+    fscanf(fptr, "%d%d", r, c);
+  ans = (int **)malloc(*r * sizeof(int *));
+  for (int i = 0; i < *r; i++) {
+    ans[i] = (int *)malloc(*c * sizeof(int));
+  }
+  // printf("r: %d c: %d\n", *r, *c);
+  for (int i = 0; i < *r; i++) {
+    for (int j = 0; j < *c; j++) {
+      fscanf(fptr, "%d", &ans[i][j]);
+      // printf("%d ",ans[i][j]);
+    }
+    // printf("\n");
+  }
+  fclose(fptr);
+  return ans;
 }

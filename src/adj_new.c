@@ -1,6 +1,6 @@
  #include <stdio.h>
 
-adj_3x3() {
+void adj_3x3() {
   int i, j, k, l, t;
   int a[3][3];
   
@@ -49,7 +49,7 @@ adj_3x3() {
 
   return 0;
 }
-adj_2x2(){
+void adj_2x2(){
 	int i,j;
 	int a[2][2];
 	printf("Enter the elements of the 2x2 matrix:\n");
