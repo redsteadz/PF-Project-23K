@@ -94,6 +94,46 @@ Navigate to src/build folder and run the following commands:
 cmake -G "MinGW Makefiles" ..
 mingw32-make
 ```
+### Installing Cmake and Make
+Install MinGW:
+
+Download the MinGW installer from the official website: https://mingw-w64.org/doku.php
+Run the installer and follow the on-screen instructions.
+During installation, make sure to select the option to add MinGW to your system PATH.
+Install CMake:
+
+Download the CMake installer for Windows from the official website: https://cmake.org/download/
+Run the installer and follow the on-screen instructions.
+Open a Command Prompt:
+
+Press Win + R, type cmd, and press Enter to open the Command Prompt.
+Navigate to Your Project Directory:
+
+Use the cd command to navigate to your project directory. For example:
+
+`cd path\to\your\project`
+Generate Makefiles with CMake:
+
+Run the following command to generate Makefiles using CMake with the MinGW generator:
+
+`cmake -G "MinGW Makefiles" ..`
+This assumes that your CMakeLists.txt file is one directory above your current location (..). Adjust the path accordingly.
+Build Your Project:
+
+After successfully generating the Makefiles, you can build your project using the following command:
+
+
+mingw32-make
+If you have multiple CPU cores, you can speed up the build process by specifying the number of cores to use. For example, for a quad-core processor:
+
+`mingw32-make -j4`
+Run Your Executable:
+
+Once the build process is complete, you can find the executable in the build directory. Run it using:
+
+`.\your_executable_name.exe`
+Replace your_executable_name.exe with the actual name of your compiled executable.
+
 ### Linux - Building
 Navigate to src/build folder and run the following commands:
 ```
