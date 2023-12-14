@@ -1,9 +1,9 @@
-#include <math.h>
 #include <stdbool.h>
-#include <stdio.h>
-#include <stdlib.h>
 #include "headers/functions.h"
 #include "headers/ui.h"
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
 // <<<<<<< Updated upstream
 // =======
 
@@ -12,29 +12,30 @@
 
 // <--------- Matrices Menu --------->
 
-void detM(){
-  char menuArr[4][100] = {"1. Determinant3x3","2. Determinant2x2","3. Adjoint3x3", "4. Adjoint2x2"};
+void detM() {
+  char menuArr[4][100] = {"1. Determinant3x3", "2. Determinant2x2",
+                          "3. Adjoint3x3", "4. Adjoint2x2"};
   int n;
-  n = selectMenu(menuArr,4);
-  
-  switch(n){
-    case 1:
-      det_3x3();
-      break;
-    case 2:
-      det_2x2();
-      break;
-    case 3:
-      adj_3x3();
-      break;
-    case 4:
-      adj_2x2();
-      break;
-    default:
-      printCenteredText("Invalid Input");
-      break;
-  }
+  n = selectMenu(menuArr, 4);
 
+  switch (n) {
+  case 1:
+    det_3x3();
+    break;
+  case 2:
+    det_2x2();
+    break;
+  case 3:
+    adj_3x3();
+    break;
+  case 4:
+    adj_2x2();
+    break;
+  default:
+    printCenteredText("Invalid Input");
+    break;
+  }
+  system("sleep 2");
 }
 
 void matM() {
@@ -134,36 +135,26 @@ void matM() {
     subM();
     break;
   }
+  system("sleep 2");
 }
-
 
 // <--------- Arithmetic Menu --------->
 
 void arithM() {
-  const char *menu = "1. Addition\n2. Subtraction\n3. Multiplication\n4. "
-                     "Division\n5. Quadratic";
-  char menuArr[][100] = {"1. Addition", "2. Subtraction", "3. Multiplication",
-                         "4. Division", "5. Quadratic"};
+
+  char menuArr[][100] = {"1. Expression Eval", "2. Quadratic"};
   // printCenteredText(menu);
   int n = selectMenu(menuArr, 5);
   // scanf("%d", &n);
   switch (n) {
   case 1:
-    add();
+    processCalc();
     break;
   case 2:
-    sub();
-    break;
-  case 3:
-    multiply();
-    break;
-  case 4:
-    division();
-    break;
-  case 5:
     quad();
     break;
   }
+  system("sleep 2");
 }
 // <<<<<<< Updated upstream
 
@@ -175,8 +166,9 @@ void trig() {
                          "4. Sec",         "5. Cosec",       "6. Cot",
                          "7. Sin inverse", "8. Cos inverse", "9. Cot inverse"};
 
-  int n = selectMenu(menuarr, 9);
 
+
+  int n = selectMenu(menuarr, 9);
   switch (n) {
   case 1:
     sine();
@@ -209,6 +201,7 @@ void trig() {
     printCenteredText("invalid option");
     break;
   }
+  system("sleep 2");
 }
 
 // <----- Log Menu ----->
@@ -230,8 +223,8 @@ void logM() {
     printCenteredText("invalid option");
     break;
   }
+  system("sleep 2");
 }
-
 
 // <------- Main Menu ------->
 
@@ -251,36 +244,41 @@ void mainM() {
       "\\____/\\__,_|_|\\___|\\__,_|_|\\__,_|\\__\\___/|_|   \n";
 
   printCenteredText(asciiArt);
-  system("sleep 1");
+  system("sleep 2");
   const char *menu = "1.Arithmetic\n2.Logarithmic\n3."
                      "Trigonometric\n4.Matrices\n5.Exit\n";
 
   char menuArr[][100] = {"1. Arithmetic", "2. Logarithmic", "3. Trigonometric",
                          "4. Matrices", "5. Exit"};
 
+  int cnt = 1;
+  while (cnt) {
   int n = selectMenu(menuArr, 5);
-  switch (n) {
-  case 1:
-    // Arithmetic Menu
-    arithM();
-    break;
-  case 2:
-    // Logarithmic
-    logM();
-    break;
-  case 3:
-    // Trignometric
-    trig();
-    break;
-  case 4:
-    // Matrices
-    matM();
-    break;
-  case 5:
-  default:
-    // Exit
-    printf("Exiting...\n");
-    break;
+    switch (n) {
+    case 1:
+      // Arithmetic Menu
+      arithM();
+      break;
+    case 2:
+      // Logarithmic
+      logM();
+      break;
+    case 3:
+      // Trignometric
+      trig();
+      break;
+    case 4:
+      // Matrices
+      matM();
+      break;
+    case 5:
+    default:
+      // Exit
+      cnt = 0;
+      printf("Exiting...\n");
+      break;
+    }
+
   }
 }
 

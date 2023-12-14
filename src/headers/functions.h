@@ -42,6 +42,7 @@ float sub();
 float multiply();
 float division();
 float quad();
+void processCalc();
 void sine();
 void cosine();
 void tangent();

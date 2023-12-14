@@ -824,6 +824,53 @@ float division() {
   printCenteredText(buf);
   return ans;
 }
+
+// Single function to handle all operations
+struct data {
+  float a;
+  float b;
+  char op;
+};
+
+float basic(struct data* a, int i){
+  char op = a[i].op;
+
+  switch(op){
+    case '+': return a[i].a + a[i].b;
+    case '-': return a[i].a - a[i].b;
+    case '*': return a[i].a * a[i].b;
+    case '/': return a[i].a / a[i].b;
+  }
+  return 0;
+}
+
+void processCalc(){
+  struct data *calc = (struct data*)malloc(sizeof(struct data)*2);
+  int i = 0;
+  // A while loop where if the char is a newline, stop
+
+  // First set of operands
+  printCenteredText("Write expression");
+  scanf("%f %c %f", &calc[i].a, &calc[i].op, &calc[i].b);
+  calc[i+1].a = basic(calc, i);
+  i++;
+  while((calc[i].op = getchar()) != '\n'){
+    if (calc[i].op == ' '){
+      break;
+    }
+    scanf("%f", &calc[i].b);
+      
+    calc = realloc(calc, sizeof(struct data)*(i+2));
+    calc[i+1].a = basic(calc, i);
+    i++;
+  }
+  char buffer[256];
+  sprintf(buffer,"%.1f", calc[i].a);
+  printCenteredText(buffer);
+}
+
+
+
 // quadratic equation solving:
 float quad() {
   float a, b, c;
