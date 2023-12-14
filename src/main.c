@@ -1,9 +1,10 @@
 #include <stdbool.h>
-#include "headers/functions.h"
-#include "headers/ui.h"
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "headers/functions.h"
+#include "headers/ui.h"
+
 // <<<<<<< Updated upstream
 // =======
 
@@ -11,6 +12,22 @@
 // >>>>>>> Stashed changes
 
 // <--------- Matrices Menu --------->
+
+#ifdef _WIN32
+#include <windows.h>
+#else
+#include <unistd.h>
+#endif
+
+void crossPlatformSleep(int seconds) {
+#ifdef _WIN32
+    // Windows
+    Sleep(seconds * 1000);
+#else
+    // Linux and other Unix-like systems
+    sleep(seconds);
+#endif
+}
 
 void detM() {
   char menuArr[4][100] = {"1. Determinant3x3", "2. Determinant2x2",
@@ -35,7 +52,7 @@ void detM() {
     printCenteredText("Invalid Input");
     break;
   }
-  system("sleep 2");
+  crossPlatformSleep(2);
 }
 
 void matM() {
@@ -135,7 +152,7 @@ void matM() {
     subM();
     break;
   }
-  system("sleep 2");
+  crossPlatformSleep(2);
 }
 
 // <--------- Arithmetic Menu --------->
@@ -154,7 +171,7 @@ void arithM() {
     quad();
     break;
   }
-  system("sleep 2");
+  crossPlatformSleep(2);
 }
 // <<<<<<< Updated upstream
 
@@ -201,7 +218,7 @@ void trig() {
     printCenteredText("invalid option");
     break;
   }
-  system("sleep 2");
+  crossPlatformSleep(2);
 }
 
 // <----- Log Menu ----->
@@ -223,7 +240,7 @@ void logM() {
     printCenteredText("invalid option");
     break;
   }
-  system("sleep 2");
+  crossPlatformSleep(2);
 }
 
 // <------- Main Menu ------->
@@ -244,7 +261,7 @@ void mainM() {
       "\\____/\\__,_|_|\\___|\\__,_|_|\\__,_|\\__\\___/|_|   \n";
 
   printCenteredText(asciiArt);
-  system("sleep 2");
+  crossPlatformSleep(2);
   const char *menu = "1.Arithmetic\n2.Logarithmic\n3."
                      "Trigonometric\n4.Matrices\n5.Exit\n";
 
