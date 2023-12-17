@@ -100,14 +100,21 @@ void printCenteredText(const char *text) {
 // Update Menu
 
 void updateMenu(char arr[][100], int size, int pos) {
-  char buffer[1000]="";
+  char *buffer = NULL;
+  size_t initL = 0;
   for (int i = 0; i < size; i++) {
-    char part[100]="";
+    char *part= NULL;
     if (i != pos) {
+      size_t partL = snprintf(NULL, 0, "%s\n", arr[i]);
+      part = (char*) realloc(part, partL+1);
       sprintf(part, "%s\n", arr[i]);
     } else {
+      size_t partL = snprintf(NULL, 0, "[[ %s ]]\n", arr[i]);
+      part = (char*) realloc(part, partL+1);
       sprintf(part, "[[ %s ]]\n", arr[i]);
     }
+    initL += strlen(part);
+    buffer = (char*) realloc(buffer, initL+1);
     strncat(buffer, part, strlen(part));
   }
   printCenteredText(buffer);
@@ -185,8 +192,8 @@ void printMatr(int r, int c, int mat[r][c], int px, int py) { // Px and Py indic
 
   for (int i = 0; i < r; i++) {
     for (int j = 0; j < c; j++) {
-
-      char part[100] = ""; // Part stores the text/num to be concatenated
+      size_t len = snprintf(NULL, 0,"%d",mat[i][j]);
+      char *part = (char*) malloc (len); // Part stores the text/num to be concatenated
       if (i == px && j == py) {
         strcpy(part, "[-] ");
         // printf("[-] ");

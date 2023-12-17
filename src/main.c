@@ -161,7 +161,7 @@ void arithM() {
 
   char menuArr[][100] = {"1. Expression Eval", "2. Quadratic"};
   // printCenteredText(menu);
-  int n = selectMenu(menuArr, 5);
+  int n = selectMenu(menuArr, 2);
   // scanf("%d", &n);
   switch (n) {
   case 1:
