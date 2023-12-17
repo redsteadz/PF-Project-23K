@@ -15,6 +15,7 @@
   - [Rayyan's Special Functions](#rayyans-special-functions)
 - [Getting Started](#getting-started)
 - [Usage](#usage)
+- [TODO](#todo)
 - [Contributors](#contributors)
 - [License](#license)
 
@@ -161,6 +162,12 @@ The files are divided into
 
 
 For more examples and details on each function, refer to the documentation (We don't have one) or code comments in the project's source code.
+
+## TODO 
+- Navigate matrix input location 
+- History Call back 
+- Use Chosen history expression to calculate next expression
+- Modify chosen history expression to be used for next calculation
 
 ## Contributors
 - Huzaila (GitHub: huzaila)
